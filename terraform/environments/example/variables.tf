@@ -54,3 +54,28 @@ variable "lambda_timeout" {
   type        = number
   default     = 3
 }
+
+# Ec2 Module Variables
+variable "ec2_ami" {
+  description = "AMI ID for the EC2 instance"
+  type        = string
+  default     = null
+}
+
+variable "ec2_instance_type" {
+  description = "Instance type for the EC2 instance"
+  type        = string
+  default     = "t2.micro"
+}
+
+variable "ec2_key_name" {
+  description = "Key name for the EC2 instance"
+  type        = string
+  default     = null
+}
+
+variable "ec2_subnet_id" {
+  description = "Subnet ID for the EC2 instance"
+  type        = string
+  default     = null
+}
