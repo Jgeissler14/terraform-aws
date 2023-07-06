@@ -33,7 +33,6 @@ module "rds" {
   tags   = local.tags
   prefix = local.prefix
 
-
   rds_engine                 = var.rds_engine
   rds_instance_class         = var.rds_instance_class
   rds_allocated_storage      = var.rds_allocated_storage
@@ -53,7 +52,6 @@ module "vpc" {
 
 }
 
-
 module "budget" {
   source = "../../modules/budget"
   tags   = local.tags
@@ -64,4 +62,17 @@ module "budget" {
   budget_threshold           = var.budget_threshold
   budget_alarm_description   = var.budget_alarm_description
   budget_alarm_sns_topic_arn = var.budget_alarm_sns_topic_arn
+}
+
+module "iam_admin_users" {
+  source = "../../modules/iam"
+  tags   = local.tags
+  prefix = local.prefix
+
+  # Don't make these variables, we need to require Pull Request
+  # approval for access changes
+  admin_users = {
+    "user1" = "arn:aws:iam::aws:policy/AdministratorAccess"
+    "user2" = "arn:aws:iam::aws:policy/ReadOnlyAccess"
+  }
 }

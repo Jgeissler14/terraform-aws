@@ -35,7 +35,7 @@ If you want to use [Terraform Cloud](https://www.terraform.io/cloud) to manage a
 
    - For sensitive data, you can mark the variable as sensitive in Terraform Cloud to ensure it is not displayed in logs or exposed in any way.
 
-5. In the root module's `provider.tf` file, update the `backend "remote"` block to include the Terraform Cloud organization and workspace information
+5. In the root module's `provider.tf` file, update the `cloud` block to include the Terraform Cloud organization and workspace information
 
 
 ## Usage
@@ -43,7 +43,9 @@ If you want to use [Terraform Cloud](https://www.terraform.io/cloud) to manage a
 ```
 gh repo clone jgeissler14/terraform-aws
 
-cd terraform-aws
+cd terraform-aws/terraform/environments/example
+
+terraform init
 
 terraform plan
 
