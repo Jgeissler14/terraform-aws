@@ -123,3 +123,53 @@ variable "rds_vpc_security_group_ids" {
   type        = list(string)
   default     = []
 }
+
+# VPC Module Variables
+variable "vpc_cidr_block" {
+  description = "CIDR block for the VPC"
+  type        = string
+  default     = "10.0.0.0/16"
+}
+
+variable "vpc_enable_dns_hostnames" {
+  description = "Enable DNS hostnames for the VPC"
+  type        = bool
+  default     = true
+}
+
+variable "subnet_cidr_block" {
+  description = "CIDR block for the subnet"
+  type        = string
+  default     = "10.0.0.0/24"
+}
+
+# Budget Module Variables
+variable "budget_alarm_name" {
+  description = "Name of the budget alarm"
+  type        = string
+  default     = "MonthlyBudgetAlarm" # Provide the default budget alarm name here
+}
+
+variable "budget_evaluation_periods" {
+  description = "Number of evaluation periods for the budget alarm"
+  type        = number
+  default     = 1 # Provide the default number of evaluation periods here
+}
+
+variable "budget_threshold" {
+  description = "Threshold value for the budget alarm"
+  type        = number
+  default     = 100 # Provide the default threshold value here
+}
+
+variable "budget_alarm_description" {
+  description = "Description of the budget alarm"
+  type        = string
+  default     = "Monthly budget exceeded" # Provide the default budget alarm description here
+}
+
+variable "budget_alarm_sns_topic_arn" {
+  description = "ARN of the SNS topic to send alarm notifications"
+  type        = string
+  default     = "arn:aws:sns:us-west-2:123456789012:MyTopic" # Provide the default SNS topic ARN here
+}
