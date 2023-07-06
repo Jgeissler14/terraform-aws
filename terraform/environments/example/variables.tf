@@ -55,7 +55,7 @@ variable "lambda_timeout" {
   default     = 3
 }
 
-# Ec2 Module Variables
+# EC2 Module Variables
 variable "ec2_ami" {
   description = "AMI ID for the EC2 instance"
   type        = string
@@ -78,4 +78,48 @@ variable "ec2_subnet_id" {
   description = "Subnet ID for the EC2 instance"
   type        = string
   default     = null
+}
+
+
+# RDS Module Variables
+variable "rds_engine" {
+  description = "Database engine for the RDS instance"
+  type        = string
+  default     = "mysql"
+}
+
+variable "rds_instance_class" {
+  description = "Instance class for the RDS instance"
+  type        = string
+  default     = "db.t2.micro"
+}
+
+variable "rds_allocated_storage" {
+  description = "Allocated storage for the RDS instance"
+  type        = number
+  default     = 20
+}
+
+variable "rds_username" {
+  description = "Username for the RDS instance"
+  type        = string
+  default     = null
+}
+
+variable "rds_password" {
+  description = "Password for the RDS instance"
+  type        = string
+  default     = null
+}
+
+variable "rds_multi_az" {
+  description = "Enable multi-AZ deployment for the RDS instance"
+  type        = bool
+  default     = false
+}
+
+variable "rds_vpc_security_group_ids" {
+  description = "List of VPC security group IDs for the RDS instance"
+  type        = list(string)
+  default     = []
 }

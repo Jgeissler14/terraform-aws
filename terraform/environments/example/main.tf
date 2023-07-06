@@ -27,3 +27,18 @@ module "ec2" {
   ec2_key_name      = var.ec2_key_name
   ec2_subnet_id     = var.ec2_subnet_id
 }
+
+module "rds" {
+  source = "../../modules/rds"
+  tags   = local.tags
+  prefix = local.prefix
+
+
+  rds_engine                 = var.rds_engine
+  rds_instance_class         = var.rds_instance_class
+  rds_allocated_storage      = var.rds_allocated_storage
+  rds_username               = var.rds_username
+  rds_password               = var.rds_password
+  rds_multi_az               = var.rds_multi_az
+  rds_vpc_security_group_ids = var.rds_vpc_security_group_ids
+}
