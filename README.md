@@ -29,13 +29,15 @@ If you want to use [Terraform Cloud](https://www.terraform.io/cloud) to manage a
 
 2. Create an organization and a workspace in Terraform Cloud.
 
-3. In your workspace, navigate to the "Variables" tab.
+3. Be sure to set the working directory to 'terraform/environments/example'
 
-4. Update the values of variables according to your needs. You can create variables to match the ones defined in the `variables.tf` file.
+4. In your workspace, navigate to the "Variables" tab.
+
+5. Update the values of variables according to your needs. You can create variables to match the ones defined in the `variables.tf` file.
 
    - For sensitive data, you can mark the variable as sensitive in Terraform Cloud to ensure it is not displayed in logs or exposed in any way.
 
-5. In the root module's `provider.tf` file, update the `cloud` block to include the Terraform Cloud organization and workspace information
+6. In the root module's `provider.tf` file, update the `cloud` block to include the Terraform Cloud organization and workspace information
 
 
 ## Usage
