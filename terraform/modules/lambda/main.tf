@@ -23,15 +23,28 @@ resource "aws_iam_role_policy_attachment" "lambda_role_attachment" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 }
 
+data "archive_file" "lambda_zip_inline" {
+  type        = "zip"
+  output_path = "/tmp/lambda_zip_inline.zip"
+  source {
+    content  = <<EOF
+module.exports.handler = async (event, context, callback) => {
+	const what = "world";
+	const response = `Hello $${what}!`;
+	callback(null, response);
+};
+EOF
+    filename = "main.js"
+  }
+}
+
 resource "aws_lambda_function" "lambda" {
   function_name = "${var.prefix}-${var.lambda_name}"
   role          = aws_iam_role.lambda_role.arn
   handler       = var.lambda_handler
   runtime       = var.lambda_runtime
   memory_size   = var.lambda_memory
-  timeout       = var.lambda_timeout
-
-  # Add any other necessary configuration for your Lambda function
+  filename      = data.archive_file.lambda_zip_inline.output_path
 
   tags = var.tags
 }

@@ -11,11 +11,12 @@ module "lambda" {
   prefix = local.prefix
   tags   = local.tags
 
-  lambda_name    = var.lambda_name
-  lambda_handler = var.lambda_handler
-  lambda_runtime = var.lambda_runtime
-  lambda_memory  = var.lambda_memory
-  lambda_timeout = var.lambda_timeout
+  lambda_name          = var.lambda_name
+  lambda_handler       = var.lambda_handler
+  lambda_runtime       = var.lambda_runtime
+  lambda_memory        = var.lambda_memory
+  lambda_timeout       = var.lambda_timeout
+  lambda_function_path = var.lambda_function_path
 }
 
 module "ec2" {

@@ -34,3 +34,8 @@ variable "lambda_timeout" {
   type        = number
   default     = 3
 }
+
+variable "lambda_function_path" {
+  description = "Path to the Lambda function source code file"
+  type        = string
+}

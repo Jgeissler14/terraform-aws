@@ -5,7 +5,6 @@ variable "tags" {
 variable "ec2_ami" {
   description = "AMI ID for the EC2 instance"
   type        = string
-  default     = null
 }
 
 variable "ec2_instance_type" {

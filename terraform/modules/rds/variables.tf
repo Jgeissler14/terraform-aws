@@ -26,11 +26,13 @@ variable "rds_allocated_storage" {
 variable "rds_username" {
   description = "Username for the RDS instance"
   type        = string
+  default     = "rds_user"
 }
 
 variable "rds_password" {
   description = "Password for the RDS instance"
   type        = string
+  default     = "rds_password"
 }
 
 variable "rds_multi_az" {

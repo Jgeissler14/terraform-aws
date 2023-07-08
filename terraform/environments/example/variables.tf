@@ -55,11 +55,17 @@ variable "lambda_timeout" {
   default     = 3
 }
 
+variable "lambda_function_path" {
+  description = "Path to the Lambda function source code file"
+  type        = string
+  default     = "./src/lambda_function.zip"
+}
+
 # EC2 Module Variables
 variable "ec2_ami" {
   description = "AMI ID for the EC2 instance"
   type        = string
-  default     = null
+  default     = "ami-06ca3ca175f37dd66"
 }
 
 variable "ec2_instance_type" {
@@ -103,13 +109,13 @@ variable "rds_allocated_storage" {
 variable "rds_username" {
   description = "Username for the RDS instance"
   type        = string
-  default     = null
+  default     = "rds_user"
 }
 
 variable "rds_password" {
   description = "Password for the RDS instance"
   type        = string
-  default     = null
+  default     = "rds_password"
 }
 
 variable "rds_multi_az" {
@@ -171,5 +177,5 @@ variable "budget_alarm_description" {
 variable "budget_alarm_sns_topic_arn" {
   description = "ARN of the SNS topic to send alarm notifications"
   type        = string
-  default     = "arn:aws:sns:us-west-2:123456789012:MyTopic" # Provide the default SNS topic ARN here
+  default     = "arn:aws:sns:us-east-1:285824578675:MyTopic" # Provide the default SNS topic ARN here
 }
