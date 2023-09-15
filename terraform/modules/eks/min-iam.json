@@ -198,7 +198,10 @@
                 "sqs:ListQueueTags",
                 "sqs:SetQueueAttributes",
                 "sqs:TagQueue",
-                "sts:GetCallerIdentity"
+                "sts:GetCallerIdentity",
+                "route53:ListHostedZones",
+                "route53:ListResourceRecordSets",
+                "route53:ListTagsForResource"
             ],
             "Resource": "*"
         }
